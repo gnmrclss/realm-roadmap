@@ -1,0 +1,612 @@
+{
+  "versione": 2,
+  "progettoAttivo": "demo",
+  "progetti": [
+    {
+      "id": "demo",
+      "nome": "Roadmap Realm Reborn",
+      "owner": "Direzione tecnica",
+      "versione": "v1.0",
+      "descrizione": "Roadmap di sviluppo verso l'apertura pubblica: stabilità, economia, contenuti.",
+      "team": [
+        {
+          "id": "u1",
+          "nome": "Lead Dev",
+          "ruolo": "Direzione tecnica",
+          "colore": "#0070E0"
+        },
+        {
+          "id": "u2",
+          "nome": "Backend",
+          "ruolo": "Lua server / SQL",
+          "colore": "#2ecc71"
+        },
+        {
+          "id": "u3",
+          "nome": "NUI",
+          "ruolo": "HTML / CSS / JS",
+          "colore": "#22d3ee"
+        },
+        {
+          "id": "u4",
+          "nome": "Mapping",
+          "ruolo": "MLO & interni",
+          "colore": "#f97316"
+        },
+        {
+          "id": "u5",
+          "nome": "Staff Mgr",
+          "ruolo": "Regolamento & staff",
+          "colore": "#a78bfa"
+        },
+        {
+          "id": "u6",
+          "nome": "QA",
+          "ruolo": "Test & bug report",
+          "colore": "#E8B84B"
+        }
+      ],
+      "categorie": [
+        {
+          "id": "eco",
+          "nome": "Economia",
+          "colore": "#E8B84B"
+        },
+        {
+          "id": "job",
+          "nome": "Lavori & attività",
+          "colore": "#2ecc71"
+        },
+        {
+          "id": "ill",
+          "nome": "Illegale",
+          "colore": "#ef5350"
+        },
+        {
+          "id": "faz",
+          "nome": "Fazioni",
+          "colore": "#a78bfa"
+        },
+        {
+          "id": "led",
+          "nome": "Polizia & EMS",
+          "colore": "#0070E0"
+        },
+        {
+          "id": "veh",
+          "nome": "Veicoli & garage",
+          "colore": "#38bdf8"
+        },
+        {
+          "id": "hou",
+          "nome": "Housing",
+          "colore": "#f97316"
+        },
+        {
+          "id": "ui",
+          "nome": "UI / HUD / NUI",
+          "colore": "#22d3ee"
+        },
+        {
+          "id": "sec",
+          "nome": "Sicurezza & anticheat",
+          "colore": "#f43f5e"
+        },
+        {
+          "id": "inf",
+          "nome": "Infrastruttura & DB",
+          "colore": "#14b8a6"
+        },
+        {
+          "id": "evt",
+          "nome": "Eventi & manutenzioni",
+          "colore": "#ec4899"
+        }
+      ],
+      "fasi": [
+        {
+          "id": "fa1",
+          "nome": "Fase 1 · Core & stabilità",
+          "colore": "#0070E0",
+          "chiusa": false
+        },
+        {
+          "id": "fa2",
+          "nome": "Fase 2 · Economia",
+          "colore": "#E8B84B",
+          "chiusa": false
+        },
+        {
+          "id": "fa3",
+          "nome": "Fase 3 · Contenuti & fazioni",
+          "colore": "#a78bfa",
+          "chiusa": false
+        },
+        {
+          "id": "fa4",
+          "nome": "Fase 4 · Apertura pubblica",
+          "colore": "#2ecc71",
+          "chiusa": false
+        },
+        {
+          "id": "fa5",
+          "nome": "Finestre operative (a ore)",
+          "colore": "#ec4899",
+          "chiusa": false
+        }
+      ],
+      "attivita": [
+        {
+          "id": "t01",
+          "nome": "Audit risorse e resmon completo",
+          "faseId": "fa1",
+          "assegnatari": [
+            "u1",
+            "u2"
+          ],
+          "inizio": "2026-09-13",
+          "fine": "2026-09-17",
+          "progresso": 60,
+          "priorita": "alta",
+          "stato": "in-corso",
+          "categoria": "inf",
+          "milestone": false,
+          "dipendenze": [],
+          "note": "Misurare ogni resource in idle e con 40 player simulati. Target: nessuna risorsa sopra 0.8ms."
+        },
+        {
+          "id": "t02",
+          "nome": "Fix sync OneSync veicoli e ownership",
+          "faseId": "fa1",
+          "assegnatari": [
+            "u2"
+          ],
+          "inizio": "2026-09-16",
+          "fine": "2026-09-22",
+          "progresso": 25,
+          "priorita": "critica",
+          "stato": "in-corso",
+          "categoria": "veh",
+          "milestone": false,
+          "dipendenze": [
+            "t01"
+          ],
+          "note": ""
+        },
+        {
+          "id": "t03",
+          "nome": "Hardening eventi server (anti-exploit)",
+          "faseId": "fa1",
+          "assegnatari": [
+            "u2",
+            "u1"
+          ],
+          "inizio": "2026-09-18",
+          "fine": "2026-09-25",
+          "progresso": 10,
+          "priorita": "critica",
+          "stato": "da-fare",
+          "categoria": "sec",
+          "milestone": false,
+          "dipendenze": [
+            "t01"
+          ],
+          "note": "Validazione server-side su denaro, inventario e permessi. Nessuna logica sensibile client-side."
+        },
+        {
+          "id": "t04",
+          "nome": "Refactor login e creazione personaggio",
+          "faseId": "fa1",
+          "assegnatari": [
+            "u3"
+          ],
+          "inizio": "2026-09-15",
+          "fine": "2026-09-24",
+          "progresso": 40,
+          "priorita": "alta",
+          "stato": "in-corso",
+          "categoria": "ui",
+          "milestone": false,
+          "dipendenze": [],
+          "note": ""
+        },
+        {
+          "id": "t05",
+          "nome": "Anticheat v2 — telemetria e quarantena",
+          "faseId": "fa1",
+          "assegnatari": [
+            "u1"
+          ],
+          "inizio": "2026-09-23",
+          "fine": "2026-10-01",
+          "progresso": 0,
+          "priorita": "alta",
+          "stato": "da-fare",
+          "categoria": "sec",
+          "milestone": false,
+          "dipendenze": [
+            "t03"
+          ],
+          "note": ""
+        },
+        {
+          "id": "t06",
+          "nome": "Build stabile candidata",
+          "faseId": "fa1",
+          "assegnatari": [
+            "u1"
+          ],
+          "inizio": "2026-10-02",
+          "fine": "2026-10-02",
+          "progresso": 0,
+          "priorita": "critica",
+          "stato": "da-fare",
+          "categoria": "inf",
+          "milestone": true,
+          "dipendenze": [
+            "t02",
+            "t04",
+            "t05"
+          ],
+          "note": ""
+        },
+        {
+          "id": "t07",
+          "nome": "Ribilanciamento payout lavori legali",
+          "faseId": "fa2",
+          "assegnatari": [
+            "u1",
+            "u5"
+          ],
+          "inizio": "2026-09-27",
+          "fine": "2026-10-05",
+          "progresso": 0,
+          "priorita": "alta",
+          "stato": "da-fare",
+          "categoria": "eco",
+          "milestone": false,
+          "dipendenze": [],
+          "note": ""
+        },
+        {
+          "id": "t08",
+          "nome": "Catena import/export e listini dinamici",
+          "faseId": "fa2",
+          "assegnatari": [
+            "u2"
+          ],
+          "inizio": "2026-10-03",
+          "fine": "2026-10-14",
+          "progresso": 0,
+          "priorita": "alta",
+          "stato": "da-fare",
+          "categoria": "eco",
+          "milestone": false,
+          "dipendenze": [
+            "t07"
+          ],
+          "note": ""
+        },
+        {
+          "id": "t09",
+          "nome": "Sink economici: tasse, manutenzione, bollette",
+          "faseId": "fa2",
+          "assegnatari": [
+            "u2",
+            "u5"
+          ],
+          "inizio": "2026-10-07",
+          "fine": "2026-10-17",
+          "progresso": 0,
+          "priorita": "media",
+          "stato": "da-fare",
+          "categoria": "eco",
+          "milestone": false,
+          "dipendenze": [
+            "t07"
+          ],
+          "note": ""
+        },
+        {
+          "id": "t10",
+          "nome": "Banking, boss menu e registro transazioni",
+          "faseId": "fa2",
+          "assegnatari": [
+            "u3"
+          ],
+          "inizio": "2026-10-05",
+          "fine": "2026-10-16",
+          "progresso": 0,
+          "priorita": "media",
+          "stato": "da-fare",
+          "categoria": "ui",
+          "milestone": false,
+          "dipendenze": [],
+          "note": ""
+        },
+        {
+          "id": "t11",
+          "nome": "Economia ECO v5 congelata",
+          "faseId": "fa2",
+          "assegnatari": [
+            "u1"
+          ],
+          "inizio": "2026-10-18",
+          "fine": "2026-10-18",
+          "progresso": 0,
+          "priorita": "critica",
+          "stato": "da-fare",
+          "categoria": "eco",
+          "milestone": true,
+          "dipendenze": [
+            "t08",
+            "t09",
+            "t10"
+          ],
+          "note": ""
+        },
+        {
+          "id": "t12",
+          "nome": "Turf wars e territori fazioni",
+          "faseId": "fa3",
+          "assegnatari": [
+            "u2",
+            "u5"
+          ],
+          "inizio": "2026-10-13",
+          "fine": "2026-10-26",
+          "progresso": 0,
+          "priorita": "alta",
+          "stato": "da-fare",
+          "categoria": "faz",
+          "milestone": false,
+          "dipendenze": [],
+          "note": ""
+        },
+        {
+          "id": "t13",
+          "nome": "Rework droghe: raccolta, lavorazione, spaccio",
+          "faseId": "fa3",
+          "assegnatari": [
+            "u2"
+          ],
+          "inizio": "2026-10-16",
+          "fine": "2026-10-29",
+          "progresso": 0,
+          "priorita": "alta",
+          "stato": "da-fare",
+          "categoria": "ill",
+          "milestone": false,
+          "dipendenze": [
+            "t11"
+          ],
+          "note": ""
+        },
+        {
+          "id": "t14",
+          "nome": "MDT polizia e workflow EMS",
+          "faseId": "fa3",
+          "assegnatari": [
+            "u3",
+            "u5"
+          ],
+          "inizio": "2026-10-19",
+          "fine": "2026-10-31",
+          "progresso": 0,
+          "priorita": "media",
+          "stato": "da-fare",
+          "categoria": "led",
+          "milestone": false,
+          "dipendenze": [],
+          "note": ""
+        },
+        {
+          "id": "t15",
+          "nome": "Corse clandestine e minigiochi kart",
+          "faseId": "fa3",
+          "assegnatari": [
+            "u4"
+          ],
+          "inizio": "2026-10-21",
+          "fine": "2026-11-02",
+          "progresso": 0,
+          "priorita": "bassa",
+          "stato": "da-fare",
+          "categoria": "veh",
+          "milestone": false,
+          "dipendenze": [],
+          "note": ""
+        },
+        {
+          "id": "t16",
+          "nome": "Housing: appartamenti, tessere, ascensori",
+          "faseId": "fa3",
+          "assegnatari": [
+            "u4",
+            "u2"
+          ],
+          "inizio": "2026-10-23",
+          "fine": "2026-11-06",
+          "progresso": 0,
+          "priorita": "media",
+          "stato": "bloccato",
+          "categoria": "hou",
+          "milestone": false,
+          "dipendenze": [],
+          "note": "Bloccato finché non è chiuso il refactor inventario condiviso."
+        },
+        {
+          "id": "t17",
+          "nome": "Stress test 60+ player",
+          "faseId": "fa4",
+          "assegnatari": [
+            "u6",
+            "u1"
+          ],
+          "inizio": "2026-11-04",
+          "fine": "2026-11-10",
+          "progresso": 0,
+          "priorita": "critica",
+          "stato": "da-fare",
+          "categoria": "inf",
+          "milestone": false,
+          "dipendenze": [
+            "t13",
+            "t14"
+          ],
+          "note": ""
+        },
+        {
+          "id": "t18",
+          "nome": "Wipe finale e reset database",
+          "faseId": "fa4",
+          "assegnatari": [
+            "u2"
+          ],
+          "inizio": "2026-11-11",
+          "fine": "2026-11-13",
+          "progresso": 0,
+          "priorita": "critica",
+          "stato": "da-fare",
+          "categoria": "inf",
+          "milestone": false,
+          "dipendenze": [
+            "t17"
+          ],
+          "note": ""
+        },
+        {
+          "id": "t19",
+          "nome": "Whitelist, regolamento e formazione staff",
+          "faseId": "fa4",
+          "assegnatari": [
+            "u5"
+          ],
+          "inizio": "2026-11-02",
+          "fine": "2026-11-14",
+          "progresso": 0,
+          "priorita": "alta",
+          "stato": "da-fare",
+          "categoria": "faz",
+          "milestone": false,
+          "dipendenze": [],
+          "note": ""
+        },
+        {
+          "id": "t20",
+          "nome": "🚀 Apertura pubblica Realm Reborn",
+          "faseId": "fa4",
+          "assegnatari": [
+            "u1",
+            "u5"
+          ],
+          "inizio": "2026-11-16",
+          "fine": "2026-11-16",
+          "progresso": 0,
+          "priorita": "critica",
+          "stato": "da-fare",
+          "categoria": "eco",
+          "milestone": true,
+          "dipendenze": [
+            "t18",
+            "t19"
+          ],
+          "note": ""
+        },
+        {
+          "id": "h01",
+          "nome": "Manutenzione notturna: riavvio + migrazione DB",
+          "faseId": "fa5",
+          "assegnatari": [
+            "u2"
+          ],
+          "inizio": "2026-09-14T03:00",
+          "fine": "2026-09-14T05:30",
+          "progresso": 0,
+          "priorita": "alta",
+          "stato": "da-fare",
+          "categoria": "evt",
+          "milestone": false,
+          "dipendenze": [],
+          "note": "Finestra a basso traffico. Backup completo prima della migrazione."
+        },
+        {
+          "id": "h02",
+          "nome": "Deploy build stabile in produzione",
+          "faseId": "fa5",
+          "assegnatari": [
+            "u1",
+            "u2"
+          ],
+          "inizio": "2026-09-14T06:00",
+          "fine": "2026-09-14T07:00",
+          "progresso": 0,
+          "priorita": "critica",
+          "stato": "da-fare",
+          "categoria": "inf",
+          "milestone": false,
+          "dipendenze": [
+            "h01"
+          ],
+          "note": ""
+        },
+        {
+          "id": "h03",
+          "nome": "Smoke test post-deploy",
+          "faseId": "fa5",
+          "assegnatari": [
+            "u6"
+          ],
+          "inizio": "2026-09-14T07:00",
+          "fine": "2026-09-14T08:30",
+          "progresso": 0,
+          "priorita": "media",
+          "stato": "da-fare",
+          "categoria": "sec",
+          "milestone": false,
+          "dipendenze": [
+            "h02"
+          ],
+          "note": ""
+        },
+        {
+          "id": "h04",
+          "nome": "Apertura server ai player",
+          "faseId": "fa5",
+          "assegnatari": [
+            "u5"
+          ],
+          "inizio": "2026-09-14T09:00",
+          "fine": "2026-09-14T09:00",
+          "progresso": 0,
+          "priorita": "critica",
+          "stato": "da-fare",
+          "categoria": "evt",
+          "milestone": true,
+          "dipendenze": [
+            "h03"
+          ],
+          "note": ""
+        },
+        {
+          "id": "h05",
+          "nome": "Evento in-game: corsa clandestina serale",
+          "faseId": "fa5",
+          "assegnatari": [
+            "u5",
+            "u4"
+          ],
+          "inizio": "2026-09-15T21:00",
+          "fine": "2026-09-15T23:30",
+          "progresso": 0,
+          "priorita": "media",
+          "stato": "da-fare",
+          "categoria": "evt",
+          "milestone": false,
+          "dipendenze": [],
+          "note": "Ritrovo al porto, 3 manche. Staff in supporto su segnalazioni."
+        }
+      ]
+    }
+  ]
+}
