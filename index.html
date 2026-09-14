@@ -822,6 +822,7 @@ let R = { a:0, b:0, dur:0, W:0 };
 let RIGHE = [];
 let undoStack = [], redoStack = [];
 let memFallback = null;
+let ORIGINE = '';   // da dove arrivano i dati aperti (es. "gantt.json"), mostrato in barra di stato
 
 const store = {
   get(){ try { return localStorage.getItem(KEY); } catch(e){ return memFallback; } },
@@ -985,7 +986,10 @@ function salva(){
   if (UI.readonly) return;
   store.set(JSON.stringify(S));
   const d = new Date();
-  $('#stSalvataggio').textContent = 'Salvato in locale · ' + pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+  const ora = pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+  $('#stSalvataggio').textContent = ORIGINE
+    ? 'Caricato da ' + ORIGINE + ' · copia locale salvata ' + ora
+    : 'Salvato in locale · ' + ora;
 }
 
 /* ---------------------------- FILTRI / RIGHE ---------------------------- */
@@ -2072,6 +2076,7 @@ function caricaDati(testo, unisci){
     nuovi.forEach(p => { if (S.progetti.some(x => x.id === p.id)) p.id = uid('p_'); S.progetti.push(p); });
     S.progettoAttivo = nuovi[0].id;
   } else S = normalizza(d);
+  ORIGINE = '';
   UI.readonly = false; $('#roBanner').classList.remove('on');
   chiudiTutte(); render({ noScroll:true }); vaiAOggi();
   toast('Dati importati', 'ok');
@@ -2179,7 +2184,7 @@ function bind(){
     else if (a === 'reset'){
       if (bloccato()) return;
       if (!confirm('Ripristinare i dati demo? Le modifiche non esportate andranno perse.')) return;
-      snap(); S = datiDemo(); render({ noScroll:true }); vaiAOggi(); toast('Dati demo ripristinati');
+      snap(); ORIGINE = ''; S = datiDemo(); render({ noScroll:true }); vaiAOggi(); toast('Dati demo ripristinati');
     }
   });
 
@@ -2392,7 +2397,7 @@ async function init(){
     try {
       const res = await fetch(params.get('src'), { cache:'no-store' });
       S = normalizza(await res.json());
-      $('#stSalvataggio').textContent = 'Caricato da ' + params.get('src') + ' · le modifiche restano locali finché non riesporti il JSON';
+      ORIGINE = params.get('src');
     } catch(err){ console.warn('src non caricato', err); }
   }
   if (!S){
